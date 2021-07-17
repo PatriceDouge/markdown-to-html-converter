@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import MarkdownEditor from "../components/markdownEditor";
 import HTMLEditor from '../components/htmlEditor';
-import ConvertButton from "../components/convertButton"
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -24,11 +23,31 @@ const EditorContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row;
+`;
+
+const Button = styled.button`
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #FFFFFF;
+  margin: 70px 2px 2px 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 300;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.2s;
+  background-color: #072F5F; 
+  height: 60px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export default function Home() {
   return (
-
     <HomeContainer>
 
       <Head>
@@ -39,7 +58,7 @@ export default function Home() {
 
       <EditorContainer>
         <MarkdownEditor />
-        <ConvertButton />
+        <Button>Convert to HTML</Button>
         <HTMLEditor />
       </EditorContainer>
 

@@ -26,14 +26,10 @@ const TextArea = styled.textarea`
 
 export default function MarkdownEditor() {
 
-    const onInputChange = e => {
-
-    };
-
     return (
         <Container>
             <Title>Markdown Text</Title>
-            <TextArea onChange={onInputChange} />
+            <TextArea />
         </Container>
     );
 }
