@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import markdownContext from "../markdownContext";
 
 const Container = styled.div`
   width: 50%;
@@ -26,14 +27,12 @@ const TextArea = styled.textarea`
 
 export default function HTMLEditor() {
 
-    const onInputChange = e => {
+  const { markdownText } = useContext(markdownContext);
 
-    };
-
-    return (
-        <Container>
-            <Title>HTML</Title>
-            <TextArea onChange={onInputChange} />
-        </Container>
-    );
+  return (
+    <Container>
+      <Title>HTML</Title>
+      <TextArea value={markdownText} />
+    </Container>
+  );
 }

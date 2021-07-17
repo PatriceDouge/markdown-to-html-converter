@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
+import markdownContext from "../markdownContext";
+
 const Container = styled.div`
   width: 50%;
   height: 100%;
@@ -26,10 +28,17 @@ const TextArea = styled.textarea`
 
 export default function MarkdownEditor() {
 
+    const { setMarkdownText } = useContext(markdownContext)
+
+    const handleChange = e => {
+        const markdownValue = e.currentTarget.value;
+        setMarkdownText(markdownValue);
+    };
+
     return (
         <Container>
             <Title>Markdown Text</Title>
-            <TextArea />
-        </Container>
+            <TextArea onChange={handleChange} />
+        </Container >
     );
 }
