@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import markdownContext from "../markdownContext";
+
+import htmlContext from "../htmlContext";
 
 const Container = styled.div`
   width: 50%;
@@ -23,16 +24,17 @@ const TextArea = styled.textarea`
   border-radius: 5px;
   font-size: 17px;
   padding: 20px;
+  resize: none;
 `;
 
 export default function HTMLEditor() {
 
-  const { markdownText } = useContext(markdownContext);
+  const { htmlResult } = useContext(htmlContext);
 
   return (
     <Container>
       <Title>HTML</Title>
-      <TextArea value={markdownText} />
+      <TextArea defaultValue={htmlResult} />
     </Container>
   );
 }

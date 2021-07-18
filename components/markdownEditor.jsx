@@ -24,6 +24,7 @@ const TextArea = styled.textarea`
   border-radius: 5px;
   font-size: 17px;
   padding: 20px;
+  resize: none;
 `;
 
 export default function MarkdownEditor() {
@@ -38,7 +39,7 @@ export default function MarkdownEditor() {
     return (
         <Container>
             <Title>Markdown Text</Title>
-            <TextArea onChange={handleChange} />
+            <TextArea onChange={handleChange}/>
         </Container >
     );
 }

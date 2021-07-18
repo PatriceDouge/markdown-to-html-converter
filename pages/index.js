@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import MarkdownEditor from "../components/markdownEditor";
-import HTMLResult from '../components/htmlResult';
+import HtmlResult from '../components/htmlResult';
 import markdownContext from '../markdownContext';
+import htmlContext from '../htmlContext';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -51,45 +52,61 @@ const Button = styled.button`
 export default function Home() {
 
   const [markdownText, setMarkdownText] = useState("");
+  const [htmlResult, setHtmlResult] = useState("");
 
-  const contextValue = {
+  const markdownContextValue = {
     markdownText,
-    setMarkdownText
+    setMarkdownText,
   }
+
+  const htmlContextValue = {
+    htmlResult,
+    setHtmlResult
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const htmlResult = markdownText;
+    setHtmlResult(htmlResult);
+};
 
   return (
 
-    <markdownContext.Provider value={contextValue}>
-      <HomeContainer>
-        <Head>
-          <title>Mailchimp Assignment</title>
-        </Head>
+    <markdownContext.Provider value={markdownContextValue}>
+      <htmlContext.Provider value={htmlContextValue}>
+        <HomeContainer>
+          <Head>
+            <title>Mailchimp Assignment</title>
+          </Head>
 
-        <Title>Markdown => HTML Converter</Title>
+          <Title>Markdown => HTML Converter</Title>
 
-        <EditorContainer>
-          <MarkdownEditor />
-          <Button>Convert to HTML</Button>
-          <HTMLResult />
-        </EditorContainer>
+          <EditorContainer>
+            <MarkdownEditor />
+            <form onSubmit={handleSubmit}>
+              <Button type="submit">Convert to HTML</Button>
+            </form>
+            <HtmlResult />
+          </EditorContainer>
 
 
-        <style jsx global>{`
-          html,
-          body {
-            padding: 0;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-              sans-serif;
-          }
+          <style jsx global>{`
+            html,
+            body {
+              padding: 0;
+              margin: 0;
+              font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+                Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+                sans-serif;
+            }
 
-          * {
-            box-sizing: border-box;
-          }
-      `}</style>
+            * {
+              box-sizing: border-box;
+            }
+        `}</style>
 
-      </HomeContainer>
+        </HomeContainer>
+      </htmlContext.Provider>
     </markdownContext.Provider>
 
   )
