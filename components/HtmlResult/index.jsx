@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import htmlContext from "../htmlContext";
+import htmlContext from "../../htmlContext";
+import TextArea from "../TextArea";
 
 const Container = styled.div`
   width: 50%;
@@ -15,16 +16,6 @@ const Title = styled.div`
   margin-bottom: 1em;
   padding: 8px 0;
   text-align: center;
-`;
-
-const TextArea = styled.textarea`
-  width: 100%;
-  height: 500px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  font-size: 17px;
-  padding: 20px;
-  resize: none;
 `;
 
 export default function HTMLEditor() {

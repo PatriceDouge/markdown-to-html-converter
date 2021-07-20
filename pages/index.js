@@ -2,8 +2,10 @@ import Head from 'next/head';
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import MarkdownEditor from "../components/markdownEditor";
-import HtmlResult from '../components/htmlResult';
+import MarkdownEditor from "../components/MarkdownEditor";
+import HtmlResult from '../components/HtmlResult';
+import MarkdownConverter from '../components/MarkdownConverter';
+
 import markdownContext from '../markdownContext';
 import htmlContext from '../htmlContext';
 
@@ -66,9 +68,9 @@ export default function Home() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const htmlResult = markdownText;
+    const htmlResult = MarkdownConverter.convertMarkdownToHtml(markdownText);
     setHtmlResult(htmlResult);
-};
+  };
 
   return (
 
