@@ -31,6 +31,6 @@ export default function MarkdownEditor() {
         <Container>
             <Title>Markdown Text</Title>
             <TextArea onChange={handleChange}/>
-        </Container >
+        </Container>
     );
 }

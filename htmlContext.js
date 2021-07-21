@@ -1,8 +1,8 @@
 import React from "react";
 
-const htmlContext = {
+const HtmlContext = {
     htmlResult: "",
     setHtmlResult: () => { }
 };
 
-export default React.createContext(htmlContext);
+export default React.createContext(HtmlContext);

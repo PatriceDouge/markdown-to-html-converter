@@ -10,6 +10,7 @@ export default class MarkdownConverter {
         let htmlResult = this.convertParagraphs(markdownText);
         htmlResult = this.convertHeaders(htmlResult);
         htmlResult = this.convertLinks(htmlResult);
+        htmlResult = this.cleanupHtml(htmlResult);
         
         return htmlResult;
     }
@@ -53,5 +54,17 @@ export default class MarkdownConverter {
         markdownText = markdownText.replace(regexLinkPattern, `<a href="$2">$1</a>`);
 
         return markdownText;
+    }
+
+    /**
+     * Removes extra paragraph tags without text after open paragraph tags and before closed ones.
+     * 
+     * @param {string} html 
+     * @returns {string} Cleanup HTML string
+     */
+    static cleanupHtml(html) {
+        let regexCleanupPattern = new RegExp(`^\\<p\\>(<a.*?>.*?\\<\\/a\\>)<\\/p>.*?$`, 'gm')
+        html = html.replace(regexCleanupPattern, `$1`);
+        return html;
     }
 }

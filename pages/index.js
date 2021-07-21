@@ -6,8 +6,8 @@ import MarkdownEditor from "../components/MarkdownEditor";
 import HtmlResult from '../components/HtmlResult';
 import MarkdownConverter from '../components/MarkdownConverter';
 
-import markdownContext from '../markdownContext';
-import htmlContext from '../htmlContext';
+import MarkdownContext from '../markdownContext';
+import HtmlContext from '../htmlContext';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -74,8 +74,8 @@ export default function Home() {
 
   return (
 
-    <markdownContext.Provider value={markdownContextValue}>
-      <htmlContext.Provider value={htmlContextValue}>
+    <MarkdownContext.Provider value={markdownContextValue}>
+      <HtmlContext.Provider value={htmlContextValue}>
         <HomeContainer>
           <Head>
             <title>Mailchimp Assignment</title>
@@ -105,11 +105,11 @@ export default function Home() {
             * {
               box-sizing: border-box;
             }
-        `}</style>
+          `}</style>
 
         </HomeContainer>
-      </htmlContext.Provider>
-    </markdownContext.Provider>
+      </HtmlContext.Provider>
+    </MarkdownContext.Provider>
 
   )
 }

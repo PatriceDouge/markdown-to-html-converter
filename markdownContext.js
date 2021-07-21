@@ -1,8 +1,8 @@
 import React from "react";
 
-const markdownContext = {
+const MarkdownContext = {
     markdownText: "",
     setMarkdownText: () => { }
 };
 
-export default React.createContext(markdownContext);
+export default React.createContext(MarkdownContext);
