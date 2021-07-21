@@ -57,14 +57,19 @@ export default class MarkdownConverter {
     }
 
     /**
-     * Removes extra paragraph tags without text after open paragraph tags and before closed ones.
+     * Removes extra paragraph tags from links without text after open paragraph tags and before closed ones &
+     * removes extra multiline paragraph tags to make just one paragraph.
      * 
      * @param {string} html 
      * @returns {string} Cleanup HTML string
      */
     static cleanupHtml(html) {
-        let regexCleanupPattern = new RegExp(`^\\<p\\>(<a.*?>.*?\\<\\/a\\>)<\\/p>.*?$`, 'gm')
-        html = html.replace(regexCleanupPattern, `$1`);
+        let regexExtraParagraphPattern = new RegExp(`^\\<p\\>(<a.*?>.*?\\<\/a\\>)<\/p>.*?$`, 'gm')
+        html = html.replace(regexExtraParagraphPattern, `$1`);
+
+        let regexMultiParagraphPattern = new RegExp(`<\/p>([\r\n])<p>`, 'gm')
+        html = html.replace(regexMultiParagraphPattern, `\n`);
+
         return html;
     }
 }
